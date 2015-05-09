@@ -9,13 +9,11 @@ data <- read.csv("household_power_consumption.txt", sep = ";", colClasses = c("c
 relevant_data <- data[data$Date == "1/2/2007" |data$Date == "2/2/2007",]
 remove(data) #remove the large source dataset which is no longer needed from memory
 
-# 2. Prepare the data (Create the frequencies grouped by increments of 0.5)
-rounded_gap <- round_any(relevant_data$Global_active_power, 0.5, ceiling)
-frequencies_gap <- table(rounded_gap)
+# 2. Prepare the data (create time series)
+gap_time_series <- ts(relevant_data$Global_active_power, frequency = 1440)
 
 # 3. Plot the results and output to png file
-png("plot1.png")
-barplot(frequencies_gap, main = "Global Active Power", col = "red", xlab = "Global Active Power (kilowatts)", ylab = "Frequency", space = 0)
+png("plot2.png")
+plot(gap_time_series, main = "Global Active Power", ylab = "Global Active Power (kilowatts)", xaxt = 'n')
+axis(1, at = c(1,2,3), labels = c("Thu", "Fri", "Sat"))
 dev.off()
-
-
