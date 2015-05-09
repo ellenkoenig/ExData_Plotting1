@@ -15,7 +15,7 @@ sub_metering['sub_metering_3'] <- ts(relevant_data$Sub_metering_3, frequency = 1
 
 # 3. Plot the results and output to png file
 png("plot3.png")
-ts.plot(sub_metering$sub_metering_1, sub_metering$sub_metering_2, sub_metering$sub_metering_3, gpars = list(xaxt = 'n'), col = c("black", "red", "blue"))
+ts.plot(sub_metering$sub_metering_1, sub_metering$sub_metering_2, sub_metering$sub_metering_3, gpars = list(xaxt = 'n'),  ylab = "Energy sub metering", col = c("black", "red", "blue"))
 axis(1, at = c(1,2,3), labels = c("Thu", "Fri", "Sat"))
 legend("topright", c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty = 1, col = c("black", "red", "blue"))
 dev.off()
