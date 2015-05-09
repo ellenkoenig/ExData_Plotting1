@@ -15,7 +15,8 @@ frequencies_gap <- table(rounded_gap)
 
 # 3. Plot the results and output to png file
 png("plot1.png")
-barplot(frequencies_gap, main = "Global Active Power", col = "red", xlab = "Global Active Power (kilowatts)", ylab = "Frequency", space = 0)
+barplot(frequencies_gap, main = "Global Active Power", col = "red", xlab = "Global Active Power (kilowatts)", ylab = "Frequency", space = 0, xaxt = 'n')
+axis(1, at = seq(0,12, by = 4), labels =  as.character(seq(0,6, by = 2)))
 dev.off()
 
 
